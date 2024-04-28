@@ -1,0 +1,6 @@
+[*.cs]
+# IDE0290: Use primary constructor
+csharp_style_prefer_primary_constructors = false
+
+# CA1050: Declare types in namespaces
+dotnet_diagnostic.CA1050.severity = silent

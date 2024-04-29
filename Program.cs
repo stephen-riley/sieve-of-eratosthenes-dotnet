@@ -1,9 +1,6 @@
 ﻿
-foreach (var i in new PrimeEnumerator(30))
+foreach (var i in Primes.PrimesIter(30))
 {
     Console.WriteLine(i);
-    if (i > 50)
-    {
-        break;
-    }
+    Console.WriteLine();
 }

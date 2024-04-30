@@ -21,7 +21,7 @@ public class Primes
             }
             else
             {
-                Console.WriteLine($"{"  ".Repeat(n)}SkipNth({n}) is SKIPPING {i}");
+                // Console.WriteLine($"{"  ".Repeat(n)}SkipNth({n}) is SKIPPING {i}");
             }
         }
     }
@@ -31,22 +31,27 @@ public class Primes
     //  If any integer makes it all the way through the current chain
     //  of SkipNs, it must be the next prime--at which point, a new
     //  SkipNs with that prime is added to the chain.
-    // See HotSwappingEnumerator for why we need one here.
+    //
+    //  I don't like having to manually drive the IEnumerator<T>
+    //   interface, but to use a foreach loop we'd have to have an
+    //   enumerator object that allowed us to change the underlying
+    //   enumerator state machine object on the fly.  Look at the 
+    //   commit history if you want to see the HotSwappingEnumerator
+    //   class.
     public static IEnumerable<int> PrimesIter(int upTo)
     {
-        var hotswap = new HotSwappingEnumerator<int>(ByOne());
         var lastIter = Math.Ceiling(Math.Sqrt(upTo));
+        var currentIter = ByOne();
 
-        foreach (var i in hotswap)
+        while (currentIter.MoveNext())
         {
-            if (i >= upTo)
+            var i = currentIter.Current;
+            if (i > upTo)
             {
                 yield break;
             }
-
             yield return i;
-
-            hotswap.CurrentEnumerator = i <= lastIter ? SkipNs(i, hotswap.CurrentEnumerator) : hotswap.CurrentEnumerator;
+            currentIter = i <= lastIter ? SkipNs(i, currentIter) : currentIter;
         }
     }
 }

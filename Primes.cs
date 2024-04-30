@@ -31,9 +31,10 @@ public class Primes
     //  If any integer makes it all the way through the current chain
     //  of SkipNs, it must be the next prime--at which point, a new
     //  SkipNs with that prime is added to the chain.
+    // See HotSwappingEnumerator for why we need one here.
     public static IEnumerable<int> PrimesIter(int upTo)
     {
-        var hotswap = new HotSwappingEnumerable<int>(ByOne());
+        var hotswap = new HotSwappingEnumerator<int>(ByOne());
         var lastIter = Math.Ceiling(Math.Sqrt(upTo));
 
         foreach (var i in hotswap)

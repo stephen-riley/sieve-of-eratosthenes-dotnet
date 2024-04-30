@@ -1,12 +1,14 @@
 # Sieve of Eratosthenes
 
-The [Sather](https://en.wikipedia.org/wiki/Sather) language developed at ICSI had rich language support for iters, object-oriented generic iterators.  [This paper](https://www.researchgate.net/publication/2623870_Sather_Iters_Object-Oriented_Iteration_Abstraction/link/02e7e5228a6bbebd8c000000/download) showed an elegant (though inefficient!) implementation of the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) that has fascinated me since I was first to the implementation circa 1995.  ([This great video](https://www.youtube.com/watch?v=klcIklsWzrY) from Khan Academy explains and visualizes the Sieve of Eratosthenes quite well.)
+The [Sather](https://en.wikipedia.org/wiki/Sather) language developed at ICSI had rich language support for iters, object-oriented generic iterators.  [This paper](https://www.researchgate.net/publication/2623870_Sather_Iters_Object-Oriented_Iteration_Abstraction/link/02e7e5228a6bbebd8c000000/download) showed an elegant (though inefficient!) implementation of the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) that has fascinated me since I was first exposed to the implementation circa 1995.  
 
 ![Sieve of Eratosthenes in Sather](img/sieve.png)
 
+([This great video](https://www.youtube.com/watch?v=klcIklsWzrY) from Khan Academy explains and visualizes the Sieve of Eratosthenes quite well.)
+
 ## Goals of the experiment
 
-My goal here was to use the C# iterator idiom as much as possible:
+My goal here was to use the C# iterator idiom as much as possible to get as close as possible to the Sather code's structure.
 
 * `yield return` and `yield break` to automatically create enumerable collections
 

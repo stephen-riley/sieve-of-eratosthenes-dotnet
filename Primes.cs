@@ -40,7 +40,7 @@ public class Primes
     //   class.
     public static IEnumerable<int> PrimesIter(int upTo)
     {
-        var lastIter = Math.Ceiling(Math.Sqrt(upTo));
+        var lastNeeded = Math.Ceiling(Math.Sqrt(upTo));
         var currentIter = ByOne();
 
         while (currentIter.MoveNext())
@@ -51,7 +51,7 @@ public class Primes
                 yield break;
             }
             yield return i;
-            currentIter = i <= lastIter ? SkipNs(i, currentIter) : currentIter;
+            currentIter = i <= lastNeeded ? SkipNs(i, currentIter) : currentIter;
         }
     }
 }

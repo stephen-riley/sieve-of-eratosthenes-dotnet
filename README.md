@@ -36,5 +36,8 @@ At one point in this experiment I had a `HotSwappingEnumerator` class that did t
 ## C# weirdness
 This code does make a slight detour from normal C# idiom: instead of the iterator methods returning `IEnumerable<T>` (typically thought of as being required for using `foreach`), they return `IEnumerator<T>`.  This allows me to strictly control the creation of iterator state machine objects, the things that look like `<Foo>d__0`, instead of leaving it to the compiler.  When I used the more traditional method in a previous version, the `HotSwappingEnumerator` class used `IEnumerable<T>` and ended up having problems because the compiler decided to call `GetEnumerator()` on the iterators too often, causing a new state machine object to be instantiated, thus causing the iterators to effectively continually reset.  By using `IEnumerator<T>`, I control the allocation of state machine objects by providing my own `GetEnumerator()`--which just returns `this` on the current enumerator.
 
+## Javascript version
+[misc/sieve.html](misc/sieve.html) contains a Javascript version using generators.
+
 ## Conclusion
 I think I can put this white whale to bed.

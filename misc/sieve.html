@@ -1,0 +1,63 @@
+<h3>Open your browser's debugger to see the results.</h3>
+
+<script>
+    function* byOne() {
+        // Don't use any array-generating function here
+        //  as we don't need to iterate over anything here
+        //  and there's no need for space complexity of O(n).
+        //  Just use a banal for(;;) loop for size O(1).
+        for (let i = 2; ; i++) {
+            yield i;
+        }
+    }
+
+    function* skipNs(n, source) {
+        // Unlike C#, Javascript iters don't need to "prime the pump",
+        //  hence the following line is not needed.
+        // source.next();
+
+        // This generator is also size O(1).
+
+        for (const next of source) {
+            if (next % n != 0) {
+                yield next;
+            } else {
+                // console.log(`skipping ${rv.value}`);
+            }
+        }
+    }
+
+    function* primes(upto) {
+        const lastNeeded = Math.ceil(Math.sqrt(upto));
+        let currentIter = byOne();
+
+        // The size complexity of this generator turns
+        //  out to be O(n), despite it looking like O(1).
+        //  This is because we are effectively building a
+        //  linked list of generators, one node for each
+        //  prime we've already found!  See the ternary
+        //  operator toward the end of this function.
+
+        // We can't use for..of here because the iterator
+        //  (currentIter) changes frequently inside the loop.
+        //  Javscript (correctly, IMHO) "caches" the iterator
+        //  specified in the for..of in the first loop and
+        //  doesn't re-evalute the iterator expression.
+        //  Therefore, we have to manually control the
+        //  iteration process; thus we use a while loop.
+        let rv = null;
+        while (rv = currentIter.next()) {
+            const i = rv.value;
+            if (i > upto) {
+                break;
+            }
+
+            yield i;
+            currentIter = i <= lastNeeded ? skipNs(i, currentIter) : currentIter;
+        }
+    }
+
+    for (const p of primes(100)) {
+        console.log(p);
+    }
+</script>

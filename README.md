@@ -1,6 +1,6 @@
 # Sieve of Eratosthenes
 
-The [Sather](https://en.wikipedia.org/wiki/Sather) language developed at ICSI had rich language support for iters, object-oriented generic iterators.  [This paper](https://www.researchgate.net/publication/2623870_Sather_Iters_Object-Oriented_Iteration_Abstraction/link/02e7e5228a6bbebd8c000000/download) showed an elegant (though inefficient!) implementation of the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) that has fascinated me since I was first to the implementation circa 1995.  ([This great video](https://www.youtube.com/watch?v=klcIklsWzrY) from Khan Academy explains and visualizes the Sieve of Eratosthenes quite well.)
+The [Sather](https://en.wikipedia.org/wiki/Sather) language developed at ICSI had rich language support for iters, object-oriented generic iterators.  [This paper](misc/Sather_Iters_Object-Oriented_Iteration_Abstraction.pdf) showed an elegant (though inefficient!) implementation of the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) that has fascinated me since I was first to the implementation circa 1995.  ([This great video](https://www.youtube.com/watch?v=klcIklsWzrY) from Khan Academy explains and visualizes the Sieve of Eratosthenes quite well.)
 
 ![Sieve of Eratosthenes in Sather](img/sieve.png)
 
